@@ -1,0 +1,28 @@
+## 关于R中的ASCII码
+
+根据 (http://ascii.911cha.com/)[http://ascii.911cha.com/],
+
+1. 如何给定字母，输出对应的10进制数字？
+2. 给定10进制数字，如何输出字母？
+
+
+涉及到的几个函数如下：
+
+ - strtoi
+ - charToRaw
+ - rawToChar
+ - as.hexmode
+ - as.raw
+
+ 
+1. 如何给定字母，输出对应的10进制数字？
+
+```{r eval=T}
+strtoi(sapply(letters, charToRaw),16L)
+```
+
+2. 给定10进制数字，如何输出字母？
+
+```{r eval=T}
+sapply(as.raw(sapply(32:126, as.hexmode)),rawToChar)
+```
